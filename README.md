@@ -1,0 +1,51 @@
+# 衣间 · 我的灵感衣柜
+
+基于 **React + TypeScript + Tailwind CSS + shadcn/ui + Vite** 的门店虚拟试衣交互原型。人物与服装效果使用预置素材，不调用真实 AI 模型。
+
+## 运行
+
+需要 Node.js 24 与 pnpm 11.25.0。
+
+```sh
+pnpm install --frozen-lockfile
+pnpm dev
+pnpm test
+pnpm build
+pnpm preview
+```
+
+`dev` 默认监听本机 5173；`preview` 在 4173 预览构建。无 API 密钥或环境变量依赖。二维码使用当前域名与路径，本机 localhost 链接不能从另一台手机直接访问。
+
+## 项目结构
+
+- `src/components/`：衣柜、人物、参数、结果、手机页以及 shadcn/ui 基础组件。
+- `src/hooks/use-wardrobe.ts`：选择、生成、取消、失败、会话清理。
+- `src/lib/`：商品目录、参数校验、组合规则与跨端链接解析。
+- `public/assets/`：预置图片；`tests/`：业务规则测试。
+- `scripts/`：公开源码检查与干净导出；`.github/workflows/check.yml`：CI。
+
+## 行为与边界
+
+1. 抽屉点选或拖拽加入单品，同类替换，连衣裙与上下装互斥，套装整组加入。
+2. 六组人物与发型作为一组选择，体重按 `weight / (height / 165)^2` 对应 A/B/C 三档素材（阈值 50、70）。该规则无人体测量依据，同档外观相同。
+3. 已移除搭配风格选择。身高影响展示大小，下半身展示比例增加约 12%，头脸不变形；参考站姿仍由原素材决定，不用于尺码预测。
+4. 人物变化保留衣架，换一套保留人物；结束体验恢复默认。生成时锁定输入，取消使任务失效，迟到结果不会恢复旧页面。
+5. 正常生成约 1.8 秒、超时约 8 秒，均为演示计时。失败、超时可通过页脚设置演示；重试走成功路径。重新生成使用同组图片。
+6. URL 只携带商品、人物/身形素材编号和到期时间，不携带身高体重。链接为可修改的前端参数，不是鉴权令牌，不能用来承载本人照片等私密信息。大屏结束不撤销手机链接；24 小时到期仅为前端展示规则。
+7. 无操作 90 秒提示、再过 15 秒清空，后台标签页恢复时按实际时间检查。无真实库存、支付、订单或店员通知。
+8. 素材限制：基础红鞋始终出现在参考图中，仅清单商品计价；短裙无上装时自动加入黄卫衣；移除上装同时移除短裙以保持预览一致。
+
+## 发布到 GitHub
+
+```sh
+pnpm audit:public
+pnpm export:github
+```
+
+将输出的 `release/github-source-时间戳/` 作为新的仓库内容。该目录不包含原仓库历史、旧生成记录、本机路径、部署标识、依赖目录或构建产物。不要直接上传整个工作区。
+
+公开源码检查只检查常见凭据和路径模式，不等于完整安全审计。**人像素材分发权限尚未确认**，公开图片前请检查 [ASSETS.md](ASSETS.md)。项目没有为这些图片授予开源许可。
+
+Vite 使用相对 `base`，资源与手机分享链接可在 GitHub Pages 的 `/fitting-room/` 仓库子路径下工作。推送到 `main` 后，`.github/workflows/pages.yml` 会运行测试、构建与公开源码检查，并部署 `dist/`。首次发布前，在仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**。发布后网址为 `https://serenawow11-stack.github.io/fitting-room/`。
+
+技术配置参考：[shadcn/ui Vite](https://ui.shadcn.com/docs/installation/vite)、[Tailwind Vite](https://tailwindcss.com/docs/installation/using-vite)。
