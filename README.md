@@ -44,9 +44,9 @@ pnpm export:github
 
 将输出的 `release/github-source-时间戳/` 作为新的仓库内容。该目录不包含原仓库历史、旧生成记录、本机路径、部署标识、依赖目录或构建产物。不要直接上传整个工作区。
 
-公开源码检查只检查常见凭据和路径模式，不等于完整安全审计。**人像素材分发权限尚未确认**，公开图片前请检查 [ASSETS.md](ASSETS.md)。项目没有为这些图片授予开源许可。
+公开源码检查只检查常见凭据和路径模式，不等于完整安全审计。用户确认人像参考素材为 AI 生成；素材来源、生成工具/模型适用条款及再分发许可的记录见 [ASSETS.md](ASSETS.md)。AI 生成说明本身不等同于开源许可，仓库未为全部图片声明开源许可。
 
-Vite 使用相对 `base`，可将 `dist/` 部署到域名根目录或 GitHub Pages 仓库子路径。已提供 GitHub Pages 工作流。需在仓库 Settings → Pages 中选择 GitHub Actions；推送 main 后执行测试、构建和部署。部署成功后才能确认公开访问地址。
+Vite 使用相对 `base`，资源与手机分享链接适配 GitHub Pages 的 `/fitting-room/` 子路径。`.github/workflows/pages.yml` 会在推送到 `main` 后运行测试、构建、公开源码检查并部署 `dist/`。仓库 Pages 发布来源已设为 GitHub Actions；公开站点为 https://serenawow11-stack.github.io/fitting-room/。
 
 技术配置参考：[shadcn/ui Vite](https://ui.shadcn.com/docs/installation/vite)、[Tailwind Vite](https://tailwindcss.com/docs/installation/using-vite)。
 

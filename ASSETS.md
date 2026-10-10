@@ -2,11 +2,11 @@
 
 | 路径 | 来源 | 状态 |
 | --- | --- | --- |
-| public/assets/face-reference-0.png 至 5.png | 项目提供的人像参考图 | 未提供原始作者、授权或公开分发凭证；不能据此认定可自由再分发 |
-| public/assets/hd-face-*.png | 根据上述参考图生成的全身换装示例 | 18 张图集，人物与原图可能有差异；生成过程不自动消除参考素材相关权利 |
-| public/assets/garments.png、models.png、wardrobe-interior.png | 本项目图像生成工具制作 | 演示用服装、套装与衣柜场景；不代表真实品牌库存 |
+| public/assets/face-reference-0.png 至 5.png | 用户确认：AI 生成的人像/发型参考素材；本说明不将其描述为真人照片 | 仓库未记录生成工具/模型适用条款或明确再分发许可；AI 生成来源不等于开源许可 |
+| public/assets/hd-face-*.png | 根据上述 AI 生成参考素材制作的全身换装示例 | 18 张图集，人物与参考图可能有差异；仓库未记录明确再分发许可或生成工具/模型适用条款 |
+| public/assets/garments.png、models.png、wardrobe-interior.png | 本项目图像生成工具制作 | 演示用服装、套装与衣柜场景；不代表真实品牌库存。仓库未记录明确再分发许可或生成工具/模型适用条款 |
 
-本项目没有为全部图片授予开源许可证。公开前请确认人像参考及衍生图的使用范围，或更换为有明确公开分发权限的素材。代码依赖许可见 THIRD_PARTY_NOTICES.md。
+本次发布依据用户授权执行。仓库未为图片整体声明开源许可证；AI 生成来源说明不等同于开源许可，也不单独证明再分发权或生成工具/模型适用条款。当前未在仓库记录明确许可/生成来源信息的文件包括：`face-reference-0.png` 至 `face-reference-5.png`、18 张 `hd-face-*.png`、`garments.png`、`models.png`、`wardrobe-interior.png`、`shoe-bow-heels.png`、`shoe-brown-boots.png`、`shoe-ivory-heels.png`、`shoe-mary-janes.png`、`shoe-slingbacks.png`、`clothing-expansion.png`、十张 `tryon-*.png` 及 `coherent-hoodie-denim-0.png` 至 `coherent-hoodie-denim-5.png`。其中人像参考素材按用户说明为 AI 生成；其余生成素材的工具/模型条款或来源记录未在仓库完整注明；鞋履参考图的原始来源也未注明。代码依赖许可见 THIRD_PARTY_NOTICES.md。
 
 全身图片每张为 1254×1254、3×3 图集，每个单元约 418 像素。页面对下半身参考比例做轻微展示调整，保持头脸比例；不声称是真实生成、精确身体模拟或高分辨率重建。不同体型、服装的站姿由预置图片决定。
 
